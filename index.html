@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Hukum Perbandingan Berganda</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Karla:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#1C1008;--surface:#2A1A0C;--surface2:#3A2512;
+  --orange:#F97316;--orange-dim:#7C3910;--orange-light:#FED7AA;
+  --yellow:#EAB308;--cream:#FEF3C7;
+  --text:#F5E6D0;--muted:#A08060;--border:rgba(249,115,22,0.2);
+}
+body{background:var(--bg);color:var(--text);font-family:'Karla',sans-serif;font-size:16px;line-height:1.75}
+
+header{
+  padding:4rem 2rem 3rem;text-align:center;
+  background:radial-gradient(ellipse at top,#3A2512 0%,#1C1008 70%);
+  border-bottom:1px solid var(--border);position:relative;
+}
+header::before{
+  content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);
+  width:600px;height:1px;background:linear-gradient(90deg,transparent,var(--orange),transparent);
+}
+.eyebrow{font-size:11px;letter-spacing:5px;text-transform:uppercase;
+  color:var(--orange);margin-bottom:1rem}
+header h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,5vw,3.5rem);
+  font-weight:700;color:#fff;line-height:1.2}
+header h1 em{color:var(--orange);font-style:italic}
+.sub{margin-top:.75rem;color:var(--muted);font-size:.9rem}
+.orule{width:50px;height:1px;background:var(--orange);margin:1.25rem auto 0;opacity:.7}
+
+.container{max-width:880px;margin:0 auto;padding:3rem 2rem}
+.stag{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--orange);margin-bottom:.35rem}
+h2{font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:600;color:#fff;
+  margin-bottom:1.25rem;padding-bottom:.5rem;border-bottom:1px solid var(--border)}
+p{margin-bottom:1rem;color:var(--text)}
+
+.def-box{background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--orange);
+  border-radius:6px;padding:1.75rem 2rem;margin-bottom:3rem}
+.formula-center{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:600;
+  color:var(--orange);text-align:center;margin:1rem 0;letter-spacing:.5px}
+
+/* PENEMU */
+.penemu-grid{display:grid;grid-template-columns:220px 1fr;gap:2.5rem;margin-bottom:3rem;align-items:start}
+@media(max-width:580px){.penemu-grid{grid-template-columns:1fr}}
+.pfr{width:190px;height:250px;margin:0 auto;overflow:hidden;border-radius:4px;
+  border:2px solid var(--orange-dim);background:var(--surface2)}
+.pfr img{width:100%;height:100%;object-fit:cover;object-position:top}
+.pname{margin-top:.7rem;font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:600;color:#fff;text-align:center}
+.pyear{font-size:.78rem;color:var(--muted);text-align:center;margin-top:2px}
+.highlight-box{background:rgba(249,115,22,0.08);border-left:3px solid var(--orange);
+  padding:.85rem 1rem;border-radius:0 4px 4px 0;margin:1rem 0}
+.highlight-box em{color:var(--orange-light);font-style:italic}
+
+/* COMPARISON VISUAL */
+.comp-section{background:var(--surface);border:1px solid var(--border);border-radius:8px;
+  padding:2rem;margin-bottom:3rem}
+.comp-title{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:#fff;margin-bottom:1.25rem}
+.compound-pair{margin-bottom:1.75rem}
+.compound-pair h4{font-size:.85rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:.75rem}
+.molecule-row{display:flex;align-items:center;gap:.75rem;margin-bottom:.5rem;flex-wrap:wrap}
+.mol-name{width:80px;font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:600;color:#fff;flex-shrink:0}
+.mol-bar{flex:1;height:32px;border-radius:4px;display:flex;overflow:hidden;min-width:200px;border:1px solid var(--border)}
+.mol-c{background:#4B5563;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:500;color:#fff}
+.mol-o{background:var(--orange-dim);display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:500;color:var(--orange-light)}
+.mol-ratio{font-size:.8rem;color:var(--orange);font-weight:500;padding-left:.5rem;white-space:nowrap}
+.ratio-compare{margin-top:.75rem;background:rgba(249,115,22,0.06);border-radius:4px;padding:.6rem 1rem;
+  font-size:.9rem;color:var(--orange-light)}
+.divider-comp{border:none;border-top:1px solid var(--border);margin:1.5rem 0}
+
+/* TABLE */
+.dalton-table{width:100%;border-collapse:collapse;margin-bottom:3rem}
+.dalton-table th{background:rgba(249,115,22,0.12);color:var(--orange);font-size:.78rem;
+  letter-spacing:2px;text-transform:uppercase;padding:.65rem 1rem;text-align:left;
+  border-bottom:1px solid var(--border)}
+.dalton-table td{padding:.7rem 1rem;border-bottom:1px solid rgba(249,115,22,0.08);
+  color:var(--text);font-size:.9rem}
+.dalton-table .hl{color:var(--orange);font-weight:500}
+.dalton-table tr:last-child td{border-bottom:none}
+
+/* TIMELINE */
+.tline{position:relative;margin-bottom:3rem}
+.tline::before{content:'';position:absolute;left:15px;top:0;bottom:0;width:1px;background:var(--border)}
+.ti{display:flex;gap:1.25rem;margin-bottom:1.5rem;align-items:flex-start}
+.ti-dot{width:32px;height:32px;border-radius:50%;background:var(--orange-dim);border:2px solid var(--orange);
+  color:var(--orange-light);font-size:.7rem;font-weight:500;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;z-index:1;position:relative}
+.ti strong{display:block;color:#fff;font-size:.95rem;font-family:'Cormorant Garamond',serif;font-weight:600}
+.ti span{font-size:.88rem;color:var(--muted)}
+
+.sumlist{list-style:none;padding:0;margin-bottom:2rem}
+.sumlist li{padding:.6rem 0 .6rem 1.5rem;border-bottom:1px solid var(--border);
+  position:relative;color:var(--text);font-size:.95rem}
+.sumlist li::before{content:'›';position:absolute;left:0;color:var(--orange);font-weight:700}
+
+blockquote{border-left:3px solid var(--orange);padding:.85rem 1.25rem;
+  background:rgba(249,115,22,0.05);border-radius:0 6px 6px 0;margin:0 0 3rem}
+blockquote p{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--orange-light);font-style:italic;margin:0}
+blockquote cite{display:block;margin-top:.5rem;font-size:.78rem;color:var(--muted);font-style:normal}
+
+footer{background:var(--surface);border-top:1px solid var(--border);text-align:center;
+  padding:1.5rem;font-size:.85rem;color:var(--muted)}
+footer span{color:var(--orange)}
+hr{border:none;border-top:1px solid var(--border);margin:2.5rem 0}
+</style>
+</head>
+<body>
+
+<header>
+  <p class="eyebrow">Hukum Dasar Kimia · Dalton</p>
+  <h1>Hukum <em>Perbandingan Berganda</em></h1>
+  <p class="sub">Law of Multiple Proportions · John Dalton · 1803</p>
+  <div class="orule"></div>
+</header>
+
+<div class="container">
+
+  <section>
+    <p class="stag">Definisi</p>
+    <h2>Apa Itu Hukum Perbandingan Berganda?</h2>
+    <div class="def-box">
+      <p>Hukum Perbandingan Berganda menyatakan bahwa jika <strong>dua unsur dapat membentuk lebih dari satu senyawa</strong>, maka perbandingan massa salah satu unsur yang bersenyawa dengan massa tetap unsur lain akan merupakan <strong>bilangan bulat sederhana</strong>.</p>
+      <p class="formula-center">m₁ : m₂ : m₃ = bilangan bulat sederhana</p>
+      <p style="text-align:center;font-size:.88rem;color:var(--muted)">Contoh: C dan O membentuk CO (karbon monoksida) dan CO₂ (karbon dioksida)</p>
+    </div>
+  </section>
+
+  <section>
+    <p class="stag">Sang Penemu</p>
+    <h2>John Dalton</h2>
+    <div class="penemu-grid">
+      <div>
+        <div class="pfr">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/JohnDalton_PF.JPG/440px-JohnDalton_PF.JPG"
+               alt="John Dalton"
+               onerror="this.parentElement.innerHTML='<div style=\'height:100%;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:.8rem\'>Dalton</div>'"/>
+        </div>
+        <p class="pname">John Dalton</p>
+        <p class="pyear">6 Sep 1766 — 27 Jul 1844</p>
+        <p class="pyear">Cumberland, Inggris</p>
+      </div>
+      <div>
+        <p>John Dalton adalah seorang kimiawan dan fisikawan Inggris yang juga dikenal sebagai pendiri <strong>Teori Atom Modern</strong>. Ia lahir dalam keluarga Quaker sederhana di Cumberland dan sebagian besar belajar secara autodidak.</p>
+        <div class="highlight-box">
+          <em>"Dalton mengubah kimia dari ilmu deskriptif menjadi ilmu kuantitatif berbasis atom — sebuah revolusi yang setara dengan Newton dalam fisika."</em>
+        </div>
+        <p>Selain hukum perbandingan berganda, Dalton juga dikenal karena penelitiannya tentang <strong>buta warna</strong> (yang dinamai Daltonisme sesuai namanya), serta formulasi Hukum Tekanan Parsial Gas.</p>
+        <p>Karyanya <em>"A New System of Chemical Philosophy"</em> (1808) menjadi salah satu buku ilmu pengetahuan paling berpengaruh abad ke-19, meletakkan fondasi pemahaman atom sebagai unit terkecil materi.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="comp-section">
+    <p class="stag">Visualisasi Hukum</p>
+    <p class="comp-title">Karbon (C) + Oksigen (O): Dua Senyawa Berbeda</p>
+
+    <div class="compound-pair">
+      <h4>Karbon Monoksida vs Karbon Dioksida</h4>
+      <div class="molecule-row">
+        <span class="mol-name">CO</span>
+        <div class="mol-bar">
+          <div class="mol-c" style="width:42.8%">C (12g)</div>
+          <div class="mol-o" style="width:57.2%">O (16g)</div>
+        </div>
+        <span class="mol-ratio">C:O = 12:16</span>
+      </div>
+      <div class="molecule-row">
+        <span class="mol-name">CO₂</span>
+        <div class="mol-bar">
+          <div class="mol-c" style="width:27.3%">C (12g)</div>
+          <div class="mol-o" style="width:72.7%">O (32g)</div>
+        </div>
+        <span class="mol-ratio">C:O = 12:32</span>
+      </div>
+      <div class="ratio-compare">
+        Massa O dalam CO : massa O dalam CO₂ (untuk C yang sama = 12g) → <strong style="color:var(--orange)">16 : 32 = 1 : 2</strong> ← bilangan bulat sederhana ✓
+      </div>
+    </div>
+
+    <div class="divider-comp"></div>
+
+    <div class="compound-pair">
+      <h4>Nitrogen + Oksigen: Tiga Senyawa</h4>
+      <div class="molecule-row">
+        <span class="mol-name">NO</span>
+        <div class="mol-bar">
+          <div class="mol-c" style="width:46.7%;background:#3B4563">N (14g)</div>
+          <div class="mol-o" style="width:53.3%">O (16g)</div>
+        </div>
+        <span class="mol-ratio">N:O = 14:16</span>
+      </div>
+      <div class="molecule-row">
+        <span class="mol-name">NO₂</span>
+        <div class="mol-bar">
+          <div class="mol-c" style="width:30.4%;background:#3B4563">N (14g)</div>
+          <div class="mol-o" style="width:69.6%">O (32g)</div>
+        </div>
+        <span class="mol-ratio">N:O = 14:32</span>
+      </div>
+      <div class="molecule-row">
+        <span class="mol-name">N₂O</span>
+        <div class="mol-bar">
+          <div class="mol-c" style="width:63.6%;background:#3B4563">N (28g)</div>
+          <div class="mol-o" style="width:36.4%">O (16g)</div>
+        </div>
+        <span class="mol-ratio">N:O = 28:16</span>
+      </div>
+      <div class="ratio-compare">
+        Massa O untuk N tetap 14g → NO: 16g, NO₂: 32g → Rasio = <strong style="color:var(--orange)">1 : 2</strong> ← bilangan bulat sederhana ✓
+      </div>
+    </div>
+  </div>
+
+  <section>
+    <p class="stag">Data Perbandingan</p>
+    <h2>Tabel Senyawa C dan O</h2>
+    <table class="dalton-table">
+      <thead>
+        <tr><th>Senyawa</th><th>Massa C (g)</th><th>Massa O (g)</th><th>Rasio O (C tetap=12g)</th><th>Perbandingan Bulat</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Karbon Monoksida (CO)</td><td>12</td><td>16</td><td class="hl">16</td><td class="hl">1</td></tr>
+        <tr><td>Karbon Dioksida (CO₂)</td><td>12</td><td>32</td><td class="hl">32</td><td class="hl">2</td></tr>
+        <tr><td>Rasio</td><td>—</td><td>—</td><td class="hl">16 : 32</td><td class="hl" style="color:#FED7AA;font-size:1.1rem">1 : 2 ✓</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <p class="stag">Linimasa Dalton</p>
+    <h2>Perjalanan Penemuan</h2>
+    <div class="tline">
+      <div class="ti">
+        <div class="ti-dot">1787</div>
+        <div>
+          <strong>Dalton Mulai Mencatat Cuaca</strong>
+          <span>Ia memulai jurnal meteorologis yang berlangsung 57 tahun — ketelitian ini membentuk caranya bereksperimen di kimia.</span>
+        </div>
+      </div>
+      <div class="ti">
+        <div class="ti-dot">1800</div>
+        <div>
+          <strong>Penelitian Tekanan Parsial Gas</strong>
+          <span>Dalton merumuskan hukum tekanan parsial, yang menunjukkan bahwa gas-gas berperilaku secara independen dalam campuran.</span>
+        </div>
+      </div>
+      <div class="ti">
+        <div class="ti-dot">1803</div>
+        <div>
+          <strong>Hukum Perbandingan Berganda</strong>
+          <span>Menganalisis data CO dan CO₂, Dalton melihat bahwa massa oksigen selalu merupakan kelipatan bulat sederhana.</span>
+        </div>
+      </div>
+      <div class="ti">
+        <div class="ti-dot">1808</div>
+        <div>
+          <strong>A New System of Chemical Philosophy</strong>
+          <span>Ia mempublikasikan teori atomnya beserta hukum perbandingan berganda secara formal, mengubah fondasi kimia modern.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <blockquote>
+    <p>"Atom-atom dari unsur yang sama identik satu sama lain dalam semua hal, dan berbeda dari atom unsur lain dalam massa dan sifatnya."</p>
+    <cite>— John Dalton, A New System of Chemical Philosophy, 1808</cite>
+  </blockquote>
+
+  <hr/>
+
+  <section>
+    <p class="stag">Rangkuman</p>
+    <h2>Poin-Poin Kunci</h2>
+    <ul class="sumlist">
+      <li>Dua unsur dapat membentuk lebih dari satu senyawa dengan komposisi berbeda.</li>
+      <li>Perbandingan massa unsur kedua (dengan unsur pertama tetap) selalu merupakan bilangan bulat sederhana.</li>
+      <li>Dikemukakan oleh John Dalton pada tahun 1803, selaras dengan Teori Atomnya.</li>
+      <li>Contoh klasik: CO dan CO₂, di mana rasio massa O adalah 1:2 untuk massa C yang sama.</li>
+      <li>Hukum ini mendukung gagasan bahwa atom bergabung dalam perbandingan bilangan bulat tetap.</li>
+    </ul>
+  </section>
+
+</div>
+
+<footer>
+  <p>Materi Kimia · <span>Hukum Perbandingan Berganda</span> · John Dalton (1803)</p>
+</footer>
+</body>
+</html>
