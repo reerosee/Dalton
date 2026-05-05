@@ -3,66 +3,77 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>Hukum Perbandingan Berganda</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,600;1,8..60,300&display=swap" rel="stylesheet"/>
+<title>Hipotesis Avogadro</title>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;0,700;1,400&family=Mulish:wght@300;400;600&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
   --bg:#FFF7ED;
-  --surface:#FFF;
+  --surface:#FFFFFF;
   --surface2:#FFEDD5;
   --orange:#F97316;
   --orange-dark:#C2410C;
   --orange-deep:#7C2D12;
-  --orange-light:#FED7AA;
   --orange-bright:#FB923C;
+  --orange-light:#FED7AA;
+  --orange-pale:#FEF3C7;
   --yellow:#FBBF24;
   --text:#431407;
   --muted:#9A3412;
-  --muted-light:#C2410C;
-  --border:rgba(249,115,22,0.25);
-  --border-strong:rgba(249,115,22,0.5);
+  --border:rgba(249,115,22,0.22);
+  --border-strong:rgba(249,115,22,0.45);
 }
-body{background:var(--bg);color:var(--text);font-family:'Source Serif 4', Georgia, serif;font-size:16px;line-height:1.75}
+body{background:var(--bg);color:var(--text);font-family:'Mulish',sans-serif;font-size:16px;line-height:1.75}
 
+/* HEADER */
 header{
-  padding:4rem 2rem 3rem;text-align:center;
-  background:linear-gradient(135deg,#EA580C 0%,#F97316 40%,#FB923C 70%,#FBBF24 100%);
+  padding:4.5rem 2rem 3rem;text-align:center;
+  background:linear-gradient(135deg,#92400E 0%,#C2410C 20%,#EA580C 45%,#F97316 70%,#FBBF24 100%);
   border-bottom:3px solid var(--orange-dark);
   position:relative;overflow:hidden;
 }
-header::before{
-  content:'';position:absolute;top:-80px;left:-80px;
-  width:350px;height:350px;border-radius:50%;
-  background:rgba(255,255,255,0.08);
-}
-header::after{
-  content:'';position:absolute;bottom:-60px;right:-60px;
-  width:280px;height:280px;border-radius:50%;
-  background:rgba(255,255,255,0.06);
-}
-.eyebrow{font-size:11px;letter-spacing:5px;text-transform:uppercase;
-  color:rgba(255,255,255,0.85);margin-bottom:1rem;position:relative}
-header h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,5vw,3.5rem);
+
+/* Decorative circles replacing stars */
+.star{position:absolute;border-radius:50%;background:rgba(255,255,255,0.18);animation:glow 3s infinite}
+@keyframes glow{0%,100%{opacity:.2;transform:scale(1)}50%{opacity:.6;transform:scale(1.2)}}
+
+.chip{display:inline-block;background:rgba(255,255,255,0.18);backdrop-filter:blur(4px);
+  border:1px solid rgba(255,255,255,0.35);color:#fff;
+  font-size:11px;letter-spacing:4px;text-transform:uppercase;
+  padding:6px 18px;border-radius:20px;margin-bottom:1.25rem;position:relative}
+header h1{font-family:'Spectral',serif;font-size:clamp(2rem,5vw,3.4rem);
   font-weight:700;color:#fff;line-height:1.2;position:relative;
-  text-shadow:0 2px 8px rgba(124,45,18,0.3)}
-header h1 em{color:#FEF9C3;font-style:italic}
-.sub{margin-top:.75rem;color:rgba(255,255,255,0.8);font-size:.9rem;position:relative}
-.orule{width:60px;height:3px;background:rgba(255,255,255,0.5);margin:1.25rem auto 0;border-radius:2px}
+  text-shadow:0 2px 10px rgba(124,45,18,0.4)}
+header h1 em{color:#FEF9C3;font-style:normal}
+.hsub{margin-top:.75rem;color:rgba(255,255,255,0.8);font-size:.9rem;position:relative}
+.vrule{width:60px;height:3px;background:rgba(255,255,255,0.5);
+  margin:1.25rem auto 0;border-radius:2px}
 
 .container{max-width:880px;margin:0 auto;padding:3rem 2rem}
 .stag{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--orange-dark);margin-bottom:.35rem;font-weight:600}
-h2{font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:600;color:var(--orange-deep);
+h2{font-family:'Spectral',serif;font-size:1.8rem;font-weight:600;color:var(--orange-deep);
   margin-bottom:1.25rem;padding-bottom:.5rem;border-bottom:2px solid var(--border-strong)}
 p{margin-bottom:1rem;color:var(--text)}
 
-.def-box{background:linear-gradient(135deg,var(--orange) 0%,var(--orange-bright) 100%);
+.def-box{background:linear-gradient(135deg,var(--orange-dark),var(--orange));
   border-radius:12px;padding:1.75rem 2rem;margin-bottom:3rem;
-  box-shadow:0 8px 24px rgba(249,115,22,0.3)}
+  box-shadow:0 8px 32px rgba(234,88,12,0.3)}
 .def-box p{color:#fff}
-.formula-center{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:600;
-  color:#FEF9C3;text-align:center;margin:1rem 0;letter-spacing:.5px;
+.formula-center{font-family:'Spectral',serif;font-size:1.3rem;font-weight:600;
+  color:#FEF9C3;text-align:center;margin:1rem 0;
   background:rgba(0,0,0,0.15);border-radius:6px;padding:.5rem 1rem}
+
+/* KEY NUMBER */
+.avogadro-number{
+  background:linear-gradient(135deg,var(--orange-deep) 0%,var(--orange-dark) 50%,var(--orange) 100%);
+  border-radius:12px;
+  padding:2rem;text-align:center;margin-bottom:3rem;
+  box-shadow:0 8px 32px rgba(194,65,12,0.35);
+}
+.avo-num{font-family:'Spectral',serif;font-size:2.2rem;font-weight:700;color:#FEF9C3;
+  letter-spacing:1px;display:block;text-shadow:0 2px 8px rgba(0,0,0,0.2)}
+.avo-label{font-size:.85rem;color:rgba(255,255,255,0.75);margin-top:.35rem;display:block}
+.avo-explain{font-size:.9rem;color:#FED7AA;margin-top:1rem;line-height:1.7}
 
 /* PENEMU */
 .penemu-grid{display:grid;grid-template-columns:220px 1fr;gap:2.5rem;margin-bottom:3rem;align-items:start}
@@ -71,39 +82,46 @@ p{margin-bottom:1rem;color:var(--text)}
   border:3px solid var(--orange);background:var(--surface2);
   box-shadow:6px 6px 0 var(--orange-light)}
 .pfr img{width:100%;height:100%;object-fit:cover;object-position:top}
-.pname{margin-top:.7rem;font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:600;color:var(--orange-deep);text-align:center}
+.pname{margin-top:.75rem;font-family:'Spectral',serif;font-size:1rem;font-weight:600;color:var(--orange-deep);text-align:center}
 .pyear{font-size:.78rem;color:var(--muted);text-align:center;margin-top:2px}
-.highlight-box{background:var(--surface2);border-left:4px solid var(--orange);
+.hbox{background:var(--surface2);border-left:4px solid var(--orange);
   padding:.85rem 1rem;border-radius:0 8px 8px 0;margin:1rem 0;
   box-shadow:inset 0 0 0 1px var(--border)}
-.highlight-box em{color:var(--orange-dark);font-style:italic}
+.hbox em{color:var(--orange-dark);font-style:italic}
 
-/* COMPARISON VISUAL */
-.comp-section{background:var(--surface);border:2px solid var(--orange-light);border-radius:12px;
+/* MOLECULE DIAGRAM */
+.mol-diagram{background:var(--surface);border:2px solid var(--orange-light);border-radius:12px;
   padding:2rem;margin-bottom:3rem;box-shadow:0 4px 16px rgba(249,115,22,0.1)}
-.comp-title{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:var(--orange-deep);margin-bottom:1.25rem}
-.compound-pair{margin-bottom:1.75rem}
-.compound-pair h4{font-size:.85rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:.75rem}
-.molecule-row{display:flex;align-items:center;gap:.75rem;margin-bottom:.5rem;flex-wrap:wrap}
-.mol-name{width:80px;font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:600;color:var(--orange-deep);flex-shrink:0}
-.mol-bar{flex:1;height:32px;border-radius:6px;display:flex;overflow:hidden;min-width:200px;border:1px solid var(--border)}
-.mol-c{background:#6B7280;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:500;color:#fff}
-.mol-o{background:var(--orange);display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:500;color:#fff}
-.mol-ratio{font-size:.8rem;color:var(--orange-dark);font-weight:600;padding-left:.5rem;white-space:nowrap}
-.ratio-compare{margin-top:.75rem;background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:.6rem 1rem;
-  font-size:.9rem;color:var(--orange-deep)}
-.divider-comp{border:none;border-top:1px solid var(--border);margin:1.5rem 0}
+.mol-diagram h3{font-family:'Spectral',serif;color:var(--orange-deep);font-size:1.2rem;font-weight:600;margin-bottom:1.25rem}
+.container-row{display:flex;align-items:flex-end;justify-content:space-around;flex-wrap:wrap;gap:1rem;margin:1.5rem 0}
+.gas-container{text-align:center}
+.flask{
+  width:90px;height:100px;margin:0 auto;
+  border:2px solid;border-radius:10px;position:relative;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;
+}
+.molecule-dot{width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:#fff}
+.gas-label{font-family:'Spectral',serif;font-weight:600;font-size:1rem;margin-top:.5rem}
+.gas-mol{font-size:.78rem;color:var(--muted);margin-top:2px}
+.gas-vol{font-size:.72rem;color:var(--orange-dark);margin-top:2px;font-weight:600}
 
-/* TABLE */
-.dalton-table{width:100%;border-collapse:collapse;margin-bottom:3rem;border-radius:8px;overflow:hidden;
-  box-shadow:0 2px 12px rgba(249,115,22,0.1)}
-.dalton-table th{background:linear-gradient(90deg,var(--orange-dark),var(--orange));
-  color:#fff;font-size:.78rem;letter-spacing:2px;text-transform:uppercase;
-  padding:.65rem 1rem;text-align:left}
-.dalton-table td{padding:.7rem 1rem;border-bottom:1px solid var(--orange-light);
-  color:var(--text);font-size:.9rem;background:var(--surface)}
-.dalton-table .hl{color:var(--orange-dark);font-weight:600}
-.dalton-table tr:last-child td{border-bottom:none;background:var(--surface2)}
+/* COMPARISON TABLE */
+.comp-table{width:100%;border-collapse:collapse;margin-bottom:3rem;border-radius:10px;overflow:hidden;
+  box-shadow:0 2px 12px rgba(249,115,22,0.12)}
+.comp-table th{background:linear-gradient(90deg,var(--orange-deep),var(--orange-dark));
+  color:#fff;font-size:.78rem;letter-spacing:1.5px;text-transform:uppercase;padding:.7rem 1rem;text-align:left}
+.comp-table td{padding:.7rem 1rem;border-bottom:1px solid var(--orange-light);font-size:.9rem;color:var(--text);background:var(--surface)}
+.comp-table .hl{color:var(--orange-dark);font-weight:600}
+.comp-table tr:last-child td{border-bottom:none}
+.comp-table tr:nth-child(even) td{background:var(--surface2)}
+
+/* IMPACT CARDS */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-bottom:3rem}
+.card{background:var(--surface);border:1px solid var(--border-strong);border-radius:10px;
+  padding:1.25rem;border-top:4px solid var(--orange)}
+.card-icon{font-size:1.75rem;margin-bottom:.5rem}
+.card h4{font-family:'Spectral',serif;font-size:1rem;font-weight:600;color:var(--orange-deep);margin-bottom:.4rem}
+.card p{font-size:.875rem;color:var(--muted);margin:0;line-height:1.6}
 
 /* TIMELINE */
 .tline{position:relative;margin-bottom:3rem}
@@ -111,24 +129,26 @@ p{margin-bottom:1rem;color:var(--text)}
   background:linear-gradient(180deg,var(--orange),var(--orange-light))}
 .ti{display:flex;gap:1.25rem;margin-bottom:1.5rem;align-items:flex-start}
 .ti-dot{width:32px;height:32px;border-radius:50%;background:var(--orange);
-  border:3px solid var(--orange-light);color:#fff;font-size:.7rem;font-weight:600;
+  border:3px solid var(--orange-light);color:#fff;
+  font-size:.65rem;font-weight:700;
   display:flex;align-items:center;justify-content:center;flex-shrink:0;z-index:1;position:relative;
-  box-shadow:0 0 0 4px rgba(249,115,22,0.2)}
-.ti strong{display:block;color:var(--orange-deep);font-size:.95rem;font-family:'Cormorant Garamond',serif;font-weight:600}
+  box-shadow:0 0 0 4px rgba(249,115,22,0.18)}
+.ti strong{display:block;color:var(--orange-deep);font-family:'Spectral',serif;font-size:1rem;font-weight:600}
 .ti span{font-size:.88rem;color:var(--muted)}
+
+blockquote{border-left:4px solid var(--orange);padding:.85rem 1.25rem;
+  background:var(--surface2);border-radius:0 8px 8px 0;margin:0 0 3rem}
+blockquote p{font-family:'Spectral',serif;font-size:1.1rem;color:var(--orange-dark);font-style:italic;margin:0}
+blockquote cite{display:block;margin-top:.5rem;font-size:.78rem;color:var(--muted);font-style:normal}
 
 .sumlist{list-style:none;padding:0;margin-bottom:2rem}
 .sumlist li{padding:.6rem 0 .6rem 1.5rem;border-bottom:1px solid var(--border);
   position:relative;color:var(--text);font-size:.95rem}
-.sumlist li::before{content:'›';position:absolute;left:0;color:var(--orange);font-weight:700;font-size:1.2rem}
-
-blockquote{border-left:4px solid var(--orange);padding:.85rem 1.25rem;
-  background:var(--surface2);border-radius:0 8px 8px 0;margin:0 0 3rem}
-blockquote p{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--orange-dark);font-style:italic;margin:0}
-blockquote cite{display:block;margin-top:.5rem;font-size:.78rem;color:var(--muted);font-style:normal}
+.sumlist li::before{content:'›';position:absolute;left:0;color:var(--orange);font-weight:700;font-size:1.1rem}
 
 footer{background:linear-gradient(90deg,var(--orange-deep),var(--orange-dark));
-  color:rgba(255,255,255,0.7);text-align:center;padding:1.5rem;font-size:.85rem}
+  border-top:none;text-align:center;
+  padding:1.5rem;font-size:.85rem;color:rgba(255,255,255,0.7)}
 footer span{color:var(--orange-light)}
 hr{border:none;border-top:2px solid var(--orange-light);margin:2.5rem 0}
 </style>
@@ -136,163 +156,247 @@ hr{border:none;border-top:2px solid var(--orange-light);margin:2.5rem 0}
 <body>
 
 <header>
-  <p class="eyebrow">Hukum Dasar Kimia · Dalton</p>
-  <h1>Hukum <em>Perbandingan Berganda</em></h1>
-  <p class="sub">John Dalton · 1803</p>
-  <div class="orule"></div>
+  <!-- decorative glows -->
+  <div class="star" style="width:14px;height:14px;top:10%;left:15%;animation-delay:.5s"></div>
+  <div class="star" style="width:9px;height:9px;top:25%;left:35%;animation-delay:1.2s"></div>
+  <div class="star" style="width:18px;height:18px;top:15%;right:20%;animation-delay:.8s"></div>
+  <div class="star" style="width:10px;height:10px;top:40%;right:40%;animation-delay:2s"></div>
+  <div class="star" style="width:12px;height:12px;top:60%;left:10%;animation-delay:1.5s"></div>
+
+  <div class="chip">Hukum Dasar Kimia</div>
+  <h1><em>Hipotesis</em> Avogadro</h1>
+  <p class="hsub">Amedeo Avogadro · 1811</p>
+  <div class="vrule"></div>
 </header>
 
 <div class="container">
 
   <section>
     <p class="stag">Definisi</p>
-    <h2>Apa Itu Hukum Perbandingan Berganda?</h2>
+    <h2>Apa Itu Hipotesis Avogadro?</h2>
     <div class="def-box">
-      <p>Hukum Perbandingan Berganda menyatakan bahwa jika <strong>dua unsur dapat membentuk lebih dari satu senyawa</strong>, maka perbandingan massa salah satu unsur yang bersenyawa dengan massa tetap unsur lain akan merupakan <strong>bilangan bulat sederhana</strong>.</p>
-      <p class="formula-center">m₁ : m₂ : m₃ = bilangan bulat sederhana</p>
-      <p style="text-align:center;font-size:.88rem;color:rgba(255,255,255,0.8)">Contoh: C dan O membentuk CO (karbon monoksida) dan CO₂ (karbon dioksida)</p>
+      <p>Hipotesis Avogadro menyatakan bahwa <strong>pada suhu dan tekanan yang sama, gas-gas yang berbeda dengan volume yang sama mengandung jumlah molekul yang sama</strong>, tidak bergantung pada jenis atau sifat fisika-kimia gas tersebut.</p>
+      <p class="formula-center">V ∝ n  (pada T dan P konstan)</p>
+      <p style="text-align:center;font-size:.88rem;color:rgba(255,255,255,0.8)">Jika volume sama, suhu sama, tekanan sama → jumlah molekul sama (untuk gas apapun)</p>
     </div>
   </section>
 
-  <section>
-    <p class="stag">Sang Penemu</p>
-    <h2>John Dalton</h2>
-    <div class="penemu-grid">
-      <div>
-        <div class="pfr">
-          <img src="Dalton.JPG"
-               alt="John Dalton"
-               onerror="this.parentElement.innerHTML='<div style=\'height:100%;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:.8rem\'>Dalton</div>'"/>
-        </div>
-        <p class="pname">John Dalton</p>
-        <p class="pyear">6 Sep 1766 — 27 Jul 1844</p>
-        <p class="pyear">Cumberland, Inggris</p>
-      </div>
-      <div>
-        <p>John Dalton adalah seorang kimiawan dan fisikawan Inggris yang juga dikenal sebagai pendiri <strong>Teori Atom Modern</strong>. Ia lahir dalam keluarga Quaker sederhana di Cumberland dan sebagian besar belajar secara autodidak.</p>
-        <div class="highlight-box">
-          <em>"Dalton mengubah kimia dari ilmu deskriptif menjadi ilmu kuantitatif berbasis atom — sebuah revolusi yang setara dengan Newton dalam fisika."</em>
-        </div>
-        <p>Selain hukum perbandingan berganda, Dalton juga dikenal karena penelitiannya tentang <strong>buta warna</strong> (yang dinamai Daltonisme sesuai namanya), serta formulasi Hukum Tekanan Parsial Gas.</p>
-        <p>Karyanya <em>"A New System of Chemical Philosophy"</em> (1808) menjadi salah satu buku ilmu pengetahuan paling berpengaruh abad ke-19, meletakkan fondasi pemahaman atom sebagai unit terkecil materi.</p>
-      </div>
-    </div>
-  </section>
-
-  <div class="comp-section">
-    <p class="stag">Visualisasi Hukum</p>
-    <p class="comp-title">Karbon (C) + Oksigen (O): Dua Senyawa Berbeda</p>
-
-    <div class="compound-pair">
-      <h4>Karbon Monoksida vs Karbon Dioksida</h4>
-      <div class="molecule-row">
-        <span class="mol-name">CO</span>
-        <div class="mol-bar">
-          <div class="mol-c" style="width:42.8%">C (12g)</div>
-          <div class="mol-o" style="width:57.2%">O (16g)</div>
-        </div>
-        <span class="mol-ratio">C:O = 12:16</span>
-      </div>
-      <div class="molecule-row">
-        <span class="mol-name">CO₂</span>
-        <div class="mol-bar">
-          <div class="mol-c" style="width:27.3%">C (12g)</div>
-          <div class="mol-o" style="width:72.7%">O (32g)</div>
-        </div>
-        <span class="mol-ratio">C:O = 12:32</span>
-      </div>
-      <div class="ratio-compare">
-        Massa O dalam CO : massa O dalam CO₂ (untuk C yang sama = 12g) → <strong style="color:var(--orange-dark)">16 : 32 = 1 : 2</strong> ← bilangan bulat sederhana ✓
-      </div>
-    </div>
-
-    <div class="divider-comp"></div>
-
-    <div class="compound-pair">
-      <h4>Nitrogen + Oksigen: Tiga Senyawa</h4>
-      <div class="molecule-row">
-        <span class="mol-name">NO</span>
-        <div class="mol-bar">
-          <div class="mol-c" style="width:46.7%;background:#78716C">N (14g)</div>
-          <div class="mol-o" style="width:53.3%">O (16g)</div>
-        </div>
-        <span class="mol-ratio">N:O = 14:16</span>
-      </div>
-      <div class="molecule-row">
-        <span class="mol-name">NO₂</span>
-        <div class="mol-bar">
-          <div class="mol-c" style="width:30.4%;background:#78716C">N (14g)</div>
-          <div class="mol-o" style="width:69.6%">O (32g)</div>
-        </div>
-        <span class="mol-ratio">N:O = 14:32</span>
-      </div>
-      <div class="molecule-row">
-        <span class="mol-name">N₂O</span>
-        <div class="mol-bar">
-          <div class="mol-c" style="width:63.6%;background:#78716C">N (28g)</div>
-          <div class="mol-o" style="width:36.4%">O (16g)</div>
-        </div>
-        <span class="mol-ratio">N:O = 28:16</span>
-      </div>
-      <div class="ratio-compare">
-        Massa O untuk N tetap 14g → NO: 16g, NO₂: 32g → Rasio = <strong style="color:var(--orange-dark)">1 : 2</strong> ← bilangan bulat sederhana ✓
-      </div>
-    </div>
+  <!-- AVOGADRO'S NUMBER SPOTLIGHT -->
+  <div class="avogadro-number">
+    <span class="avo-num">6,022 × 10²³</span>
+    <span class="avo-label">Bilangan Avogadro (N_A) — jumlah partikel dalam 1 mol zat</span>
+    <p class="avo-explain">
+      Satu mol gas apapun pada STP (0°C, 1 atm) menempati volume <strong style="color:#FEF9C3">22,4 liter</strong> dan mengandung tepat <strong style="color:#FEF9C3">6,022 × 10²³ molekul</strong>. Ini adalah konsekuensi langsung dari Hipotesis Avogadro dan merupakan salah satu konstanta fisika paling fundamental.
+    </p>
   </div>
 
   <section>
-    <p class="stag">Data Perbandingan</p>
-    <h2>Tabel Senyawa C dan O</h2>
-    <table class="dalton-table">
+    <p class="stag">Sang Penemu</p>
+    <h2>Lorenzo Romano Amedeo Carlo Avogadro</h2>
+    <div class="penemu-grid">
+      <div>
+        <div class="pfr">
+          <img src="Avo.jpg"
+               alt="Amedeo Avogadro"
+               onerror="this.parentElement.innerHTML='<div style=\'height:100%;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:.8rem\'>Avogadro</div>'"/>
+        </div>
+        <p class="pname">Amedeo Avogadro</p>
+        <p class="pyear">9 Agustus 1776 — 9 Juli 1856</p>
+        <p class="pyear">Turin, Italia</p>
+      </div>
+      <div>
+        <p>Amedeo Avogadro adalah fisikawan dan kimiawan Italia yang lahir dari keluarga bangsawan di Turin. Meski latar belakang pendidikannya adalah hukum, ia tertarik pada fisika dan matematika hingga akhirnya mendedikasikan hidupnya untuk ilmu pengetahuan alam.</p>
+        <div class="hbox">
+          <em>"Hipotesis Avogadro awalnya diabaikan selama hampir 50 tahun. Baru pada Kongres Kimia Karlsruhe (1860), empat tahun setelah kematiannya, karya ini diakui dunia berkat Stanislao Cannizzaro."</em>
+        </div>
+        <p>Avogadro adalah orang pertama yang membedakan secara jelas antara <strong>atom</strong> (unit terkecil unsur) dan <strong>molekul</strong> (gabungan dua atom atau lebih). Perbedaan ini sangat krusial namun diabaikan oleh komunitas ilmiah selama puluhan tahun.</p>
+        <p>Ia menjabat sebagai profesor fisika matematika pertama di Universitas Turin dan terus berkarya hingga usia tua. Meski tidak melihat pengakuan atas karyanya semasa hidup, namanya kini diabadikan sebagai salah satu konstanta paling penting dalam kimia.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MOLECULE VISUAL -->
+  <div class="mol-diagram">
+    <p class="stag">Visualisasi Konsep</p>
+    <h3>Volume Sama, Suhu-Tekanan Sama → Jumlah Molekul Sama</h3>
+    <p style="color:var(--muted);font-size:.88rem">Tiga gas berbeda dalam wadah bervolume sama, pada kondisi T dan P yang identik:</p>
+
+    <div class="container-row">
+      <div class="gas-container">
+        <div class="flask" style="border-color:var(--orange-bright);background:rgba(249,115,22,0.07)">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px">
+            <div class="molecule-dot" style="background:var(--orange-bright)">H</div>
+            <div class="molecule-dot" style="background:var(--orange-bright)">H</div>
+            <div class="molecule-dot" style="background:var(--orange-bright)">H</div>
+            <div class="molecule-dot" style="background:var(--orange-bright)">H</div>
+            <div class="molecule-dot" style="background:var(--orange-bright)">H</div>
+            <div class="molecule-dot" style="background:var(--orange-bright)">H</div>
+          </div>
+        </div>
+        <div class="gas-label" style="color:var(--orange-bright)">H₂</div>
+        <div class="gas-mol">6 molekul</div>
+        <div class="gas-vol">1 volume</div>
+      </div>
+
+      <div class="gas-container">
+        <div class="flask" style="border-color:var(--orange-dark);background:rgba(194,65,12,0.07)">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px">
+            <div class="molecule-dot" style="background:var(--orange-dark)">O</div>
+            <div class="molecule-dot" style="background:var(--orange-dark)">O</div>
+            <div class="molecule-dot" style="background:var(--orange-dark)">O</div>
+            <div class="molecule-dot" style="background:var(--orange-dark)">O</div>
+            <div class="molecule-dot" style="background:var(--orange-dark)">O</div>
+            <div class="molecule-dot" style="background:var(--orange-dark)">O</div>
+          </div>
+        </div>
+        <div class="gas-label" style="color:var(--orange-dark)">O₂</div>
+        <div class="gas-mol">6 molekul</div>
+        <div class="gas-vol">1 volume</div>
+      </div>
+
+      <div class="gas-container">
+        <div class="flask" style="border-color:var(--yellow);background:rgba(251,191,36,0.1)">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px">
+            <div class="molecule-dot" style="background:var(--yellow);color:var(--orange-deep)">N</div>
+            <div class="molecule-dot" style="background:var(--yellow);color:var(--orange-deep)">N</div>
+            <div class="molecule-dot" style="background:var(--yellow);color:var(--orange-deep)">N</div>
+            <div class="molecule-dot" style="background:var(--yellow);color:var(--orange-deep)">N</div>
+            <div class="molecule-dot" style="background:var(--yellow);color:var(--orange-deep)">N</div>
+            <div class="molecule-dot" style="background:var(--yellow);color:var(--orange-deep)">N</div>
+          </div>
+        </div>
+        <div class="gas-label" style="color:var(--yellow)">N₂</div>
+        <div class="gas-mol">6 molekul</div>
+        <div class="gas-vol">1 volume</div>
+      </div>
+    </div>
+
+    <p style="text-align:center;font-size:.85rem;color:var(--muted)">
+      Meski jenis molekul berbeda dan massa molar berbeda, jumlah molekul dalam volume yang sama selalu <strong style="color:var(--orange-dark)">identik</strong> pada T dan P yang sama.
+    </p>
+  </div>
+
+  <section>
+    <p class="stag">Implikasi & Hubungan</p>
+    <h2>Keterkaitan dengan Hukum-Hukum Lain</h2>
+    <table class="comp-table">
       <thead>
-        <tr><th>Senyawa</th><th>Massa C (g)</th><th>Massa O (g)</th><th>Rasio O (C tetap=12g)</th><th>Perbandingan Bulat</th></tr>
+        <tr><th>Konsep</th><th>Rumusan</th><th>Hubungan dengan Avogadro</th></tr>
       </thead>
       <tbody>
-        <tr><td>Karbon Monoksida (CO)</td><td>12</td><td>16</td><td class="hl">16</td><td class="hl">1</td></tr>
-        <tr><td>Karbon Dioksida (CO₂)</td><td>12</td><td>32</td><td class="hl">32</td><td class="hl">2</td></tr>
-        <tr><td>Rasio</td><td>—</td><td>—</td><td class="hl">16 : 32</td><td class="hl" style="font-size:1.1rem">1 : 2 ✓</td></tr>
+        <tr>
+          <td>Hukum Gay-Lussac</td>
+          <td>V gas bereaksi = bilangan bulat</td>
+          <td class="hl">Avogadro menjelaskan mengapa → karena molekul bereaksi dalam rasio bulat</td>
+        </tr>
+        <tr>
+          <td>Hukum Gas Ideal</td>
+          <td>PV = nRT</td>
+          <td class="hl">n (mol) = jumlah partikel/N_A; V ∝ n langsung dari hipotesis Avogadro</td>
+        </tr>
+        <tr>
+          <td>Volume Molar</td>
+          <td>22,4 L/mol (STP)</td>
+          <td class="hl">Konsekuensi langsung: 1 mol gas apapun = 22,4 L pada 0°C & 1 atm</td>
+        </tr>
+        <tr>
+          <td>Massa Molar</td>
+          <td>M = massa/mol</td>
+          <td class="hl">Avogadro membedakan berat atom vs molekul, fondasi penghitungan massa molar</td>
+        </tr>
       </tbody>
     </table>
   </section>
 
   <section>
-    <p class="stag">Linimasa Dalton</p>
-    <h2>Perjalanan Penemuan</h2>
+    <p class="stag">Linimasa</p>
+    <h2>Perjalanan Panjang Menuju Pengakuan</h2>
     <div class="tline">
-      <div class="ti">
-        <div class="ti-dot">1787</div>
-        <div>
-          <strong>Dalton Mulai Mencatat Cuaca</strong>
-          <span>Ia memulai jurnal meteorologis yang berlangsung 57 tahun — ketelitian ini membentuk caranya bereksperimen di kimia.</span>
-        </div>
-      </div>
-      <div class="ti">
-        <div class="ti-dot">1800</div>
-        <div>
-          <strong>Penelitian Tekanan Parsial Gas</strong>
-          <span>Dalton merumuskan hukum tekanan parsial, yang menunjukkan bahwa gas-gas berperilaku secara independen dalam campuran.</span>
-        </div>
-      </div>
-      <div class="ti">
-        <div class="ti-dot">1803</div>
-        <div>
-          <strong>Hukum Perbandingan Berganda</strong>
-          <span>Menganalisis data CO dan CO₂, Dalton melihat bahwa massa oksigen selalu merupakan kelipatan bulat sederhana.</span>
-        </div>
-      </div>
       <div class="ti">
         <div class="ti-dot">1808</div>
         <div>
-          <strong>A New System of Chemical Philosophy</strong>
-          <span>Ia mempublikasikan teori atomnya beserta hukum perbandingan berganda secara formal, mengubah fondasi kimia modern.</span>
+          <strong>Gay-Lussac — Hukum Perbandingan Volume</strong>
+          <span>Mengamati bahwa volume gas bereaksi dalam rasio bilangan bulat sederhana, namun tidak bisa menjelaskan mengapa.</span>
+        </div>
+      </div>
+      <div class="ti">
+        <div class="ti-dot">1811</div>
+        <div>
+          <strong>Avogadro Menerbitkan Hipotesisnya</strong>
+          <span>Dalam makalah di Journal de Physique, ia mengusulkan bahwa volume sama gas pada kondisi sama mengandung jumlah molekul sama.</span>
+        </div>
+      </div>
+      <div class="ti">
+        <div class="ti-dot">1811</div>
+        <div>
+          <strong>Diabaikan oleh Komunitas Ilmiah</strong>
+          <span>Berzelius, Dalton, dan tokoh kimia lainnya tidak menerima hipotesis ini. Perbedaan antara atom dan molekul terlalu asing saat itu.</span>
+        </div>
+      </div>
+      <div class="ti">
+        <div class="ti-dot">1856</div>
+        <div>
+          <strong>Avogadro Wafat Tanpa Pengakuan</strong>
+          <span>Ia meninggal dunia di usia 79 tahun tanpa pernah menyaksikan karyanya diterima secara luas.</span>
+        </div>
+      </div>
+      <div class="ti">
+        <div class="ti-dot">1860</div>
+        <div>
+          <strong>Kongres Karlsruhe — Pengakuan Resmi</strong>
+          <span>Stanislao Cannizzaro mempresentasikan karya Avogadro dan meyakinkan dunia bahwa hipotesis ini benar. Kimia modern pun terkonsolidasi.</span>
+        </div>
+      </div>
+      <div class="ti">
+        <div class="ti-dot">1909</div>
+        <div>
+          <strong>Jean Perrin — Konfirmasi Eksperimental</strong>
+          <span>Melalui studi gerak Brown, Perrin pertama kali menentukan nilai N_A secara eksperimental: 6,022 × 10²³. Ia memenangkan Nobel Fisika 1926.</span>
         </div>
       </div>
     </div>
   </section>
 
+  <section>
+    <p class="stag">Aplikasi</p>
+    <h2>Penerapan dalam Sains & Teknologi</h2>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">⚗️</div>
+        <h4>Stoikiometri Gas</h4>
+        <p>Menghitung jumlah mol dan massa gas yang terlibat dalam reaksi menggunakan volume molar 22,4 L/mol.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🌡️</div>
+        <h4>Hukum Gas Ideal</h4>
+        <p>PV = nRT langsung menggunakan konsep Avogadro; n (jumlah mol) adalah representasi jumlah partikel.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">💨</div>
+        <h4>Meteorologi & Atmosfer</h4>
+        <p>Menghitung jumlah molekul gas di lapisan atmosfer tertentu untuk pemodelan cuaca dan iklim.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">💊</div>
+        <h4>Farmakologi</h4>
+        <p>Menentukan dosis obat berbasis mol; N_A digunakan untuk menghitung jumlah molekul aktif dalam dosis tertentu.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔋</div>
+        <h4>Elektrokimia</h4>
+        <p>Konstanta Faraday (F = N_A × e) menghubungkan jumlah elektron dalam reaksi elektrokimia dengan mol.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🧬</div>
+        <h4>Biologi Molekuler</h4>
+        <p>Menghitung jumlah molekul DNA, protein, atau enzim dalam larutan untuk eksperimen biokimia.</p>
+      </div>
+    </div>
+  </section>
+
   <blockquote>
-    <p>"Atom-atom dari unsur yang sama identik satu sama lain dalam semua hal, dan berbeda dari atom unsur lain dalam massa dan sifatnya."</p>
-    <cite>— John Dalton, A New System of Chemical Philosophy, 1808</cite>
+    <p>"Kita harus mengakui bahwa molekul-molekul gas yang berbeda, pada suhu dan tekanan yang sama, mengandung jumlah molekul elementer yang sama persis."</p>
+    <cite>— Amedeo Avogadro, Essay d'une manière de déterminer les masses relatives..., 1811</cite>
   </blockquote>
 
   <hr/>
@@ -301,18 +405,19 @@ hr{border:none;border-top:2px solid var(--orange-light);margin:2.5rem 0}
     <p class="stag">Rangkuman</p>
     <h2>Poin-Poin Kunci</h2>
     <ul class="sumlist">
-      <li>Dua unsur dapat membentuk lebih dari satu senyawa dengan komposisi berbeda.</li>
-      <li>Perbandingan massa unsur kedua (dengan unsur pertama tetap) selalu merupakan bilangan bulat sederhana.</li>
-      <li>Dikemukakan oleh John Dalton pada tahun 1803, selaras dengan Teori Atomnya.</li>
-      <li>Contoh klasik: CO dan CO₂, di mana rasio massa O adalah 1:2 untuk massa C yang sama.</li>
-      <li>Hukum ini mendukung gagasan bahwa atom bergabung dalam perbandingan bilangan bulat tetap.</li>
+      <li>Gas-gas berbeda dalam volume sama, T dan P sama, mengandung jumlah molekul yang sama.</li>
+      <li>Dikemukakan oleh Amedeo Avogadro pada tahun 1811, namun baru diakui pada tahun 1860.</li>
+      <li>1 mol zat apapun mengandung 6,022 × 10²³ partikel (Bilangan Avogadro).</li>
+      <li>1 mol gas pada STP menempati volume 22,4 liter (Volume Molar Gas).</li>
+      <li>Menjadi jembatan penjelasan antara Hukum Gay-Lussac dan Teori Atom Dalton.</li>
+      <li>Hipotesis ini menjelaskan mengapa reaksi gas menghasilkan bilangan bulat sederhana dalam volume.</li>
     </ul>
   </section>
 
 </div>
 
 <footer>
-  <p><span>Hukum Perbandingan Berganda</span> · John Dalton (1803)</p>
+  <p><span>Hipotesis Avogadro</span> · Amedeo Avogadro (1811)</p>
 </footer>
 </body>
 </html>
